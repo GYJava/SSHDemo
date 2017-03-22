@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts> 
+	<!-- 告知Struts2运行时使用Spring来创建对象  --> 
+	<constant name="struts.objectFactory" value="spring" />
+	<!-- 
+    <package name="default"  extends="struts-default, convention-default, embeddedjsp-default, json-default">
+        	登录用ACTION
+	calss="loginAction"中loginAction是spring配置文件里生成的bean对象
+   <action name="login" class="loginAction" method="login">
+         <result name="ownerInfo">/ownerInfo.jsp</result>
+   </action>
+   卖出宠物
+   <action name="sellPet_*" class="sellPetAction" method="{1}">
+        <result name="sellPet">/sellPet.jsp</result>
+        <result name="sell_success">/ownerInfo.jsp</result>
+   </action>
+		<action name="sellPet_*" class="sellPetAction" method="{1}">
+			<result name="sellPet">/sellPet.jsp</result>
+			<result name="sellPetSucess">/ownerInfo.jsp</result>
+		</action>
+		<action name="buyPet_*" class="buyPetAction" method="{1}">
+			<result name="buyPet">/sellPetSucess.jsp</result>
+		</action>
+    </package> -->
+
+    <!-- Add packages here -->
+    <package name="com.entity"  extends="struts-default">
+    <!-- 这里的class并没有引用一个具体的类而是取了一个别名，接下来再由spring给它注入 -->
+    	 <action name="Index" class="myIndexAction">
+            <result name="success">/WEB-INF/jsp/index.jsp</result>
+       </action>
+    </package>
+    
+    <!-- http://localhost:8081/MySqlDemo1_Spring_Struts2/Index1.action  -->
+    <package name="com.action"  extends="struts-default">
+    	 <action name="Index1" class="myIndexAction1" method="FindStudents">
+            <result name="success1">/WEB-INF/jsp/login.jsp</result>
+       </action>
+    </package>
+
+</struts>

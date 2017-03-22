@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+
+	<bean id="myIndexAction" class="com.entity.IndexAction" scope="prototype">
+		<!--<property name="index" ref="myService1"></property>  -->
+	</bean>
+
+	
+	<bean id="myService1" class="com.service.StudentsServiceImpl" scope="prototype">
+		<property name="studentsDao" ref="myDao1"></property>
+	</bean>
+		
+	<bean id="myDao1" class="com.Dao.StudentsDaoImp" scope="prototype">
+	<property name="c" ref="myConnection"></property>
+	</bean>
+	
+	<bean id="myConnection" class="com.tools.MyConnection" scope="prototype"></bean>
+	
+	<bean id="myIndexAction1" class="com.action.FindStudentsAction" scope="prototype">
+		<property name="studentsService" ref="myService1"></property> 
+	</bean>
+	
+</beans>
