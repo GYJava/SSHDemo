@@ -30,7 +30,7 @@ public class LoginAction extends ActionSupport{
 	}
 	
 	public String LoginFuction() {
-		loginFlag = "0";
+//		loginFlag = "0";
 		Object object = loginService.login(name, pwd, loginFlag);
 		
 		System.out.println("loginFlag"+loginFlag);
