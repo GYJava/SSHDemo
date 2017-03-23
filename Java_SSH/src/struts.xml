@@ -40,6 +40,14 @@
     	 <action name="Index1" class="myIndexAction1" method="FindStudents">
             <result name="success1">/WEB-INF/jsp/login.jsp</result>
        </action>
+       
+     <action name="login" class="loginAction" method="Login"> 
+    	<result name="oznerInfo">/WEB-INF/jsp/login.jsp</result>
+    </action>
+      <action name="login1" class="loginAction" method="LoginFuction"> 
+    	<result name="oznerInfo1">/WEB-INF/jsp/index.jsp</result>
+    </action>
     </package>
+
 
 </struts>

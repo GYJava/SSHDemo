@@ -17,6 +17,6 @@
   <property name="connection.url">jdbc:mysql://localhost:3306/mysql</property> 
 
   <mapping resource="Students.hbm.xml"/> 
-  
+  <mapping resource="OznerUser.hbm.xml"/> 
   </session-factory>
 </hibernate-configuration>

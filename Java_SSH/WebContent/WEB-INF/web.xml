@@ -17,7 +17,8 @@
   
     <filter-mapping>  
         <filter-name>struts2</filter-name>  
-        <url-pattern>/*</url-pattern>  
+        <url-pattern>/*</url-pattern> 
+        <!-- <url-pattern>*action</url-pattern> -->
     </filter-mapping>  
   <!-- http://localhost:8081/MySqlDemo1_Hibernate_Struts/Index.action -->
   
