@@ -9,26 +9,51 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  <!-- http://localhost:8081/Java_SSH/Index1.action -->
-  <filter>  
-        <filter-name>struts2</filter-name>  
-        <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>  
-    </filter>  
-  
-    <filter-mapping>  
-        <filter-name>struts2</filter-name>  
-        <url-pattern>/*</url-pattern> 
-        <!-- <url-pattern>*action</url-pattern> -->
-    </filter-mapping>  
-  <!-- http://localhost:8081/MySqlDemo1_Hibernate_Struts/Index.action -->
-  
+  <filter>
+    <filter-name>struts2</filter-name>
+    <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>struts2</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
   <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
-    
-   <!-- 连接spring -->
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
   <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>classpath:applicationContext.xml</param-value>
   </context-param>
+  
+  <servlet>
+  	<servlet-name>GYServlet</servlet-name>
+  	<servlet-class>com.servlet.GYServlet</servlet-class>
+  	
+  	 <init-param>
+          <param-name>name</param-name>
+          <param-value>zgy</param-value>
+      </init-param>
+       <init-param>        
+ 	 <param-name>password</param-name>
+         <param-value>123</param-value>
+     </init-param>
+     <init-param>
+         <param-name>charset</param-name>
+         <param-value>UTF-8</param-value>
+     </init-param> 
+  	
+  </servlet>
+  <!-- WEB应用程序在启动时，就会装载并创建Servlet的实例对象、以及调用Servlet实例对象的init()方法 -->
+ <!--    <servlet>
+        <servlet-name>invoker</servlet-name>
+        <servlet-class>
+            org.apache.catalina.servlets.InvokerServlet
+        </servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet> -->
+  <servlet-mapping>
+  	<servlet-name>GYServlet</servlet-name>
+  	<url-pattern>/GYJade/*</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
