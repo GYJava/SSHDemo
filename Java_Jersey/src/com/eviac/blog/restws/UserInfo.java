@@ -1,13 +1,24 @@
 package com.eviac.blog.restws;
 
 import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.HashMap;
 import java.util.List;
 
+import javax.validation.constraints.Null;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+
+import org.apache.jasper.tagplugins.jstl.core.Set;
+
+import com.sun.corba.se.spi.orbutil.fsm.Guard;
+import com.sun.javafx.collections.MappingChange.Map;
+import com.sun.org.apache.bcel.internal.generic.NEW;
 
 //这里@Path定义了类的层次路径。 
 //指定了资源类提供服务的URI路径。
@@ -50,8 +61,7 @@ public class UserInfo {
 	@Path("/getUserListJson")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<User> getUserListJson() {
-		System.out.println("出错了");
-		
+	
 		List<User> users = new ArrayList<User>() ;
 		
 		User user = new User();
@@ -64,5 +74,85 @@ public class UserInfo {
 		
 		return users;
 	}
+	
+	//同时支持POST和GET接口
+	@GET
+	@Path("/getUserInfo")
+	@Produces(MediaType.APPLICATION_JSON)
+	public HashMap<String, Object> getUserInfo(@QueryParam("name") String name) {
+		System.out.println(name);
+		HashMap map = new HashMap();
+		
+		
+		
+		List<User> users = new ArrayList<User>() ;
+		
+		User user = new User();
+		user.setAge("23");
+		user.setName("zgy");
+		user.setSex("男");
+		users.add(user);
+		users.add(user);
+		users.add(user);
+		map.put("data", users);
+		map.put("success", "1");
+		
+		return map;
+	}
+	
+	@POST
+	@Path("/getUserInfo")
+	@Produces(MediaType.APPLICATION_JSON)
+	public HashMap<String, Object> getUserInfopost(@QueryParam("name") String name) {
+		System.out.println(name);
+		HashMap map = new HashMap();
+		
+		
+		
+		List<User> users = new ArrayList<User>() ;
+		
+		User user = new User();
+		user.setAge("23");
+		user.setName("zgy");
+		user.setSex("男");
+		users.add(user);
+		users.add(user);
+		users.add(user);
+		map.put("data", users);
+		map.put("success", "1");
+		
+		return map;
+	}
+	
+	@POST
+	@Path("/getUserInfo1")
+//	@PathParam("name")
+	@Produces(MediaType.APPLICATION_JSON)
+	public HashMap<String, Object> getUserInfo1(@QueryParam("name") String name) {
+		System.out.println(name);
+		HashMap map = new HashMap();
+
+		if (name == null) {
+			map.put("data", new ArrayList<User>() );
+			map.put("success", "-100");
+			return map;
+		}
+		
+		
+		List<User> users = new ArrayList<User>() ;
+		
+		User user = new User();
+		user.setAge("23");
+		user.setName("zgy");
+		user.setSex("男");
+		users.add(user);
+		users.add(user);
+		users.add(user);
+		map.put("data", users);
+		map.put("success", "1");
+		
+		return map;
+	}
+	
 }
 
