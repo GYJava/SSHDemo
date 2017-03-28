@@ -15,7 +15,7 @@
   </filter>
   <filter-mapping>
     <filter-name>struts2</filter-name>
-    <url-pattern>/*</url-pattern>
+    <url-pattern>/struts2/*</url-pattern>
   </filter-mapping>
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
@@ -25,7 +25,23 @@
     <param-value>classpath:applicationContext.xml</param-value>
   </context-param>
   
-  <servlet>
+      <!--http://localhost:8081/MySqlDemo1_Spring_Struts3_Hibernate2_Jerset/rest/UserInfoService/getUserInfo  -->
+<servlet> 
+<servlet-name>Jersey REST Service</servlet-name> 
+<servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class> 
+<init-param> 
+<param-name>javax.ws.rs.Application</param-name> 
+<param-value>com.servlet.APIApplication</param-value> 
+</init-param> 
+<load-on-startup>1</load-on-startup> 
+</servlet> 
+<servlet-mapping> 
+<servlet-name>Jersey REST Service</servlet-name> 
+<url-pattern>/rest/*</url-pattern> 
+</servlet-mapping> 
+ 
+  
+<!--   <servlet>
   	<servlet-name>GYServlet</servlet-name>
   	<servlet-class>com.servlet.GYServlet</servlet-class>
   	
@@ -42,7 +58,7 @@
          <param-value>UTF-8</param-value>
      </init-param> 
   	
-  </servlet>
+  </servlet> -->
   <!-- WEB应用程序在启动时，就会装载并创建Servlet的实例对象、以及调用Servlet实例对象的init()方法 -->
  <!--    <servlet>
         <servlet-name>invoker</servlet-name>
@@ -51,9 +67,9 @@
         </servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet> -->
-  <servlet-mapping>
+ <!--  <servlet-mapping>
   	<servlet-name>GYServlet</servlet-name>
   	<url-pattern>/GYJade/*</url-pattern>
-  </servlet-mapping>
+  </servlet-mapping> -->
   
 </web-app>

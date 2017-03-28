@@ -41,4 +41,8 @@
 	
 	</bean> 
 	
+	<bean id="FindStudents" class="com.servlet.UserInfo" scope="prototype">
+	<property name="studentsService" ref="myService1"></property> 
+	</bean> 
+	
 </beans>
