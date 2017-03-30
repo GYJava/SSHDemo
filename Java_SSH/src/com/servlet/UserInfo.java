@@ -25,6 +25,7 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import com.Dao.RegisterDao;
+import com.entity.OznerUser;
 import com.entity.Students;
 import com.opensymphony.xwork2.ActionSupport;
 import com.service.Registerservice;
@@ -163,6 +164,12 @@ public class UserInfo {
 		
 		HashMap map = new HashMap();
 		com.entity.OznerUser user = registerservice.userRegister(name, pwd);
+		
+		if (user == null) {
+			map.put("errcode", "-400");
+			return map;
+		}
+		
 		map.put("success", 1);
 		String token = new TokenProcessor().generateToken(name, true);
 //		map.put("token", token);

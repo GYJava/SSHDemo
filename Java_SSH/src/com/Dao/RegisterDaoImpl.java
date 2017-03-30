@@ -23,12 +23,17 @@ public class RegisterDaoImpl extends HibernateDao implements RegisterDao {
 //		String hql = "insert into OznerUser";
 		
 		OznerUser user = new OznerUser();
-		user.setId(50);
+		user.setId(7);
 		user.setName(name);
 		user.setPwd(pwd);
 		String token = new TokenProcessor().generateToken(name, true);
 		user.setToken(token);
-		session.save(user);
+		try {
+			session.save(user);
+		} catch (Exception e) {
+			// TODO: handle exception
+			return null;
+		} 
 		
 		tx.commit();
 //		HibernateDao.closeSession();
