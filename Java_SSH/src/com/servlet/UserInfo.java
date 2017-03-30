@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.constraints.Null;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -14,6 +15,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import org.apache.jasper.tagplugins.jstl.core.Set;
@@ -28,10 +30,12 @@ import com.service.StudentsService;
 import com.sun.corba.se.spi.orbutil.fsm.Guard;
 import com.sun.javafx.collections.MappingChange.Map;
 import com.sun.org.apache.bcel.internal.generic.NEW;
+import com.tools.Token;
 import com.tools.TokenProcessor;
 
 //这里@Path定义了类的层次路径。 
 //指定了资源类提供服务的URI路径。
+
 @Path("UserInfoService")
 @Component
 public class UserInfo {
@@ -42,6 +46,7 @@ public class UserInfo {
 	private StudentsService studentsService;
 	
 //	private List<Students> studentsList;
+	@Context HttpServletRequest request;
 	@GET
 	@Path("/FindStudents")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -62,13 +67,13 @@ public class UserInfo {
 		studentsList =	studentsService.getAllStudents();
 		System.out.println("==========================studentsList" + studentsList);
 	
-
-//		ServletContext servletContext = this.getServletContext();    
-//  
-//		WebApplicationContext wac = null;     
-//		wac = WebApplicationContextUtils.getRequiredWebApplicationContext(servletContext);    
-//          
-//		this.userService = (UserService) wac.getBean("userService");
+		request.getSession().setAttribute("username", "guest");
+		
+		Object object = request.getSession().getAttribute("username");
+		System.out.println(object);
+		
+		String token = new TokenProcessor().generateToken("ava", true);
+		System.out.println(token);
 		
 		return studentsList;
 		

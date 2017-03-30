@@ -5,13 +5,13 @@ import java.security.NoSuchAlgorithmException;
 
 public class TokenProcessor {
 	
-	public static TokenProcessor instance = new TokenProcessor();
+	private static TokenProcessor instance = new TokenProcessor();
 	
 	private long previous;
 	
-	 public TokenProcessor() {  
+	public TokenProcessor() {  
 	    
-	 }  
+	}  
 	  
 	    public static TokenProcessor getInstance() {  
 	        return instance;  
