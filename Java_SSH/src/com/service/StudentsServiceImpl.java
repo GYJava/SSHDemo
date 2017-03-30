@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.Dao.StudentsDao;
 import com.entity.Students;
 
-@Service()
+@Service("studentsService")
 public class StudentsServiceImpl implements StudentsService{
 	
 	private List<Students> studentsList;

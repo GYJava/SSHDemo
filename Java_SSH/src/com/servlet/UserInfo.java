@@ -28,6 +28,7 @@ import com.service.StudentsService;
 import com.sun.corba.se.spi.orbutil.fsm.Guard;
 import com.sun.javafx.collections.MappingChange.Map;
 import com.sun.org.apache.bcel.internal.generic.NEW;
+import com.tools.TokenProcessor;
 
 //这里@Path定义了类的层次路径。 
 //指定了资源类提供服务的URI路径。
@@ -45,14 +46,8 @@ public class UserInfo {
 	@Path("/FindStudents")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Students> FindStudents() {
-		System.out.println("==========================");
-//		studentsList = studentsService.getAllStudents();
-
-		List<Students> studentsList = new ArrayList<Students>();
-		studentsList =	studentsService.getAllStudents();
-		System.out.println("==========================studentsList" + studentsList);
 		
-//		GYBaseDao baseDao = new GYBaseDao();
+//	GYBaseDao baseDao = new GYBaseDao();
 //		
 //		ArrayList<OznerUser> userList = new ArrayList<OznerUser>();
 //		userList = baseDao.SearchOznerUser();
@@ -60,6 +55,13 @@ public class UserInfo {
 //		for (OznerUser oznerUser : userList) {
 //			System.out.println(oznerUser.getUserName());
 //		}
+//		System.out.println("==========================");
+//		studentsList = studentsService.getAllStudents();
+
+		List<Students> studentsList = new ArrayList<Students>();
+		studentsList =	studentsService.getAllStudents();
+		System.out.println("==========================studentsList" + studentsList);
+	
 
 //		ServletContext servletContext = this.getServletContext();    
 //  
@@ -71,6 +73,8 @@ public class UserInfo {
 		return studentsList;
 		
 	}
+	
+	
 	
 	public void setStudentsService(StudentsService studentsService) {
 		this.studentsService = studentsService;
