@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.Dao.StudentsDao;
 import com.entity.Students;
 
-@Service("StudentsService")
+@Service()
 public class StudentsServiceImpl implements StudentsService{
 	
 	private List<Students> studentsList;
@@ -24,7 +24,7 @@ public class StudentsServiceImpl implements StudentsService{
 	public List<Students> getAllStudents() {
 
 		studentsList = studentsDao.getAllStudents();
-		System.out.println("====================="  + "=====================");
+		System.out.println("=====================StudentsServiceImpl"  + "=====================");
 
 		return studentsList;
 	}

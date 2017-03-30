@@ -36,19 +36,30 @@ import com.sun.org.apache.bcel.internal.generic.NEW;
 public class UserInfo {
 	
 	//此处要使用service层
+	
 	@Autowired
 	private StudentsService studentsService;
 	
-	private List<Students> studentsList;
+//	private List<Students> studentsList;
 	@GET
 	@Path("/FindStudents")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Students> FindStudents() {
+		System.out.println("==========================");
+//		studentsList = studentsService.getAllStudents();
+
+		List<Students> studentsList = new ArrayList<Students>();
+		studentsList =	studentsService.getAllStudents();
+		System.out.println("==========================studentsList" + studentsList);
 		
-		studentsList = studentsService.getAllStudents();
-		
-		System.out.println("==========================" + studentsList);
-		
+//		GYBaseDao baseDao = new GYBaseDao();
+//		
+//		ArrayList<OznerUser> userList = new ArrayList<OznerUser>();
+//		userList = baseDao.SearchOznerUser();
+//		
+//		for (OznerUser oznerUser : userList) {
+//			System.out.println(oznerUser.getUserName());
+//		}
 
 //		ServletContext servletContext = this.getServletContext();    
 //  
@@ -65,6 +76,14 @@ public class UserInfo {
 		this.studentsService = studentsService;
 	}
 	
+//	public List<Students> getStudentsList() {
+//		return studentsList;
+//	}
+//	
+//	public void setStudentsList(List<Students> studentsList) {
+//		this.studentsList = studentsList;
+//	}
+//	
 	
 	// @GET表示方法会处理HTTP GET请求
 	@GET

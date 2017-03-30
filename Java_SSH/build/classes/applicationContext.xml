@@ -10,7 +10,11 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
-
+	<!-- 开启通过注释进行事务配置 -->
+	<context:annotation-config />
+	<!-- 开启通过注释进行组件注入 -->
+	<context:component-scan base-package="com.servlet" />
+	
 	<bean id="myIndexAction" class="com.entity.IndexAction" scope="prototype">
 		<!--<property name="index" ref="myService1"></property>  -->
 	</bean>
@@ -41,8 +45,8 @@
 	
 	</bean> 
 	
-	<bean id="FindStudents" class="com.servlet.UserInfo" scope="prototype">
+	<!-- <bean id="FindStudents" class="com.servlet.UserInfo" scope="prototype">
 	<property name="studentsService" ref="myService1"></property> 
-	</bean> 
+	</bean>  -->
 	
 </beans>

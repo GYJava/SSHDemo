@@ -17,9 +17,14 @@
     <filter-name>struts2</filter-name>
     <url-pattern>/struts2/*</url-pattern>
   </filter-mapping>
+  
+  
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
+  <listener>  
+        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>  
+    </listener> 
   <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>classpath:applicationContext.xml</param-value>
@@ -28,11 +33,42 @@
       <!--http://localhost:8081/MySqlDemo1_Spring_Struts3_Hibernate2_Jerset/rest/UserInfoService/getUserInfo  -->
 <servlet> 
 <servlet-name>Jersey REST Service</servlet-name> 
-<servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class> 
-<init-param> 
+ <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+<!--  <persistence-unit-ref>
+     <persistence-unit-ref-name>persistence/widget</persistence-unit-ref-name>
+     <persistence-unit-name>WidgetPU</persistence-unit-name>
+ </persistence-unit-ref> -->
+ <!-- <init-param>
+        <param-name>jersey.config.server.provider.packages</param-name>
+        <param-value>com.att.ucomm.admin</param-value>
+    </init-param>
+   <init-param>
+        <param-name>jersey.config.server.provider.classnames</param-name>
+        <param-value>com.att.ucomm.admin.SecurityRequestFilter;org.glassfish.jersey.filter.LoggingFilter</param-value>
+    </init-param>
+     <init-param>
+        <param-name>jersey.config.server.tracing</param-name>
+        <param-value>ALL</param-value> -->
+<!--     </init-param> -->
+<!-- 1.0+ -->
+<!-- <servlet-class>com.sun.jersey.spi.spring.container.servlet.SpringServlet</servlet-class> -->
+ <init-param> 
 <param-name>javax.ws.rs.Application</param-name> 
 <param-value>com.servlet.APIApplication</param-value> 
-</init-param> 
+</init-param>  
+<init-param>
+<param-name>jersey.config.server.provider.packages</param-name>
+<param-value>com.servlet</param-value>
+</init-param>
+
+<init-param>
+     <param-name>unit:WidgetPU</param-name>
+     <param-value>persistence/widget</param-value>
+ </init-param>
+<!-- <init-param>
+<param-name>com.sun.jersey.config.property.packages</param-name>
+<param-value>com.servlet</param-value>
+</init-param> -->
 <load-on-startup>1</load-on-startup> 
 </servlet> 
 <servlet-mapping> 
