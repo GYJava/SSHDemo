@@ -24,8 +24,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
+import com.Dao.RegisterDao;
 import com.entity.Students;
 import com.opensymphony.xwork2.ActionSupport;
+import com.service.Registerservice;
 import com.service.StudentsService;
 import com.sun.corba.se.spi.orbutil.fsm.Guard;
 import com.sun.javafx.collections.MappingChange.Map;
@@ -44,6 +46,9 @@ public class UserInfo {
 	
 	@Autowired
 	private StudentsService studentsService;
+	
+	@Autowired
+	private Registerservice registerservice;
 	
 //	private List<Students> studentsList;
 	@Context HttpServletRequest request;
@@ -83,6 +88,10 @@ public class UserInfo {
 	
 	public void setStudentsService(StudentsService studentsService) {
 		this.studentsService = studentsService;
+	}
+	
+	public void setRegisterservice(Registerservice registerservice) {
+		this.registerservice = registerservice;
 	}
 	
 //	public List<Students> getStudentsList() {
@@ -142,6 +151,24 @@ public class UserInfo {
 		users.add(user);
 		
 		return users;
+	}
+	
+
+	
+	@GET
+	@Path("/registerUser")
+	@Produces(MediaType.APPLICATION_JSON)
+	public HashMap<String, Object> registerUser(@QueryParam("name") String name, @QueryParam("pwd") String pwd) {
+		System.out.println(name);
+		
+		HashMap map = new HashMap();
+		com.entity.OznerUser user = registerservice.userRegister(name, pwd);
+		map.put("success", 1);
+		String token = new TokenProcessor().generateToken(name, true);
+//		map.put("token", token);
+		map.put("data", user);
+		System.out.println(user);
+		return map;
 	}
 	
 	//同时支持POST和GET接口

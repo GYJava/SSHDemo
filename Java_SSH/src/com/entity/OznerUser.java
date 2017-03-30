@@ -5,7 +5,7 @@ public class OznerUser {
 	private int id;
 	private String name;
 	private String pwd;
-	
+	private String token;
 	
 	public String getPwd() {
 		return pwd;
@@ -29,6 +29,12 @@ public class OznerUser {
 	@Override
 	public String toString() {
 		return "OznerUser [id=" + id + ", name=" + name + ", pwd=" + pwd + "]";
+	}
+	public String getToken() {
+		return token;
+	}
+	public void setToken(String token) {
+		this.token = token;
 	}
 	
 }

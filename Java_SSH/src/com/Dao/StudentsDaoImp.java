@@ -84,7 +84,9 @@ public class StudentsDaoImp implements StudentsDao {
 		String hql = "FROM Students";
 		
 		Query query = session.createQuery(hql);
-		List results = query.list();
+		//设置分页		
+		query.setFirstResult(1).setMaxResults(4);
+		List results = query.getResultList();
 		
 		System.out.println("=====================" + results + "=====================");
 		return results;

@@ -48,6 +48,7 @@
     	<result name="oznerInfo1">/WEB-INF/jsp/index.jsp</result>
     </action>
     </package>
+ 
 	<!--  <package name="com.servlet"  extends="struts-default">
 		   <action name="FindStudents" class="FindStudents" method="FindStudents"> 
 		    </action>
