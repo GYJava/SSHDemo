@@ -74,7 +74,8 @@ public class UserInfo {
 		System.out.println("==========================studentsList" + studentsList);
 	
 		request.getSession().setAttribute("username", "guest");
-		
+		Object object1 = request.getSession().getAttribute("guest");
+		System.out.println(object1);
 		Object object = request.getSession().getAttribute("username");
 		System.out.println(object);
 		
@@ -153,8 +154,6 @@ public class UserInfo {
 		
 		return users;
 	}
-	
-
 	
 	@GET
 	@Path("/registerUser")
